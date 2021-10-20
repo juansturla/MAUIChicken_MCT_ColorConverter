@@ -4,6 +4,7 @@ using Microsoft.Maui.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using UIKit;
@@ -13,8 +14,8 @@ namespace MAUIChicken_MCT_ColorConverter.MyImage
     public class TintableImage : Image
     {
         public static readonly BindableProperty TintColorProperty
-        = BindableProperty.CreateAttached("TintColor", typeof(Color), typeof(TintableImage), Colors.Transparent,
-            propertyChanged: OnTintColorChanged);
+        = BindableProperty.CreateAttached("TintColor", typeof(Color), typeof(TintableImage), Colors.Transparent
+            );
 
         public static Color GetTintColor(BindableObject view)
             => (Color)view.GetValue(TintColorProperty);
@@ -29,33 +30,18 @@ namespace MAUIChicken_MCT_ColorConverter.MyImage
             {
                 Console.WriteLine("Called TintColor set");
 
-                SetValue(TintColorProperty, value);
                 ChangeColor((Color)value);
+                SetValue(TintColorProperty, value);
             }
         }
 
-        static void OnTintColorChanged(BindableObject bindable, object oldValue, object newValue)
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            var image = bindable as Image;
-            Console.WriteLine("Called OnTinColorChanged");
-#if __ANDROID__
-            var newView = image.Handler.NativeView as Android.Widget.ImageView;
-            if (newValue == TintColorProperty.DefaultValue)
-            {
-                newView.ClearColorFilter();
-                Console.WriteLine("Default value Called, cleaning");
-
-            }
-            else
-            {
-                Color newColor = (Color)newValue;
-
-                Console.WriteLine("Changing to a new color ");
-                newView.SetColorFilter(new Android.Graphics.PorterDuffColorFilter(newColor.ToNative(), Android.Graphics.PorterDuff.Mode.SrcIn ?? throw new NullReferenceException()));
-            }
-
-#endif
+            base.OnPropertyChanged(propertyName);
+                if (propertyName == "Renderer")
+                ChangeColor(TintColor);
         }
+
         void ChangeColor(Color newValue)
         {
             var image = this;

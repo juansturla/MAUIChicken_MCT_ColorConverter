@@ -1,67 +1,100 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIChicken_MCT_ColorConverter.MainPage"
+             xmlns:mctConverters="clr-namespace:CommunityToolkit.Maui.Converters;assembly=CommunityToolkit.Maui"
              xmlns:local="clr-namespace:MAUIChicken_MCT_ColorConverter.MyImage"
              BackgroundColor="{DynamicResource SecondaryColor}">
+    <ContentPage.Resources>
+         <mctConverters:ColorToRgbStringConverter x:Key="ColorToRgbStringConverter" />
+            <mctConverters:ColorToRgbaStringConverter x:Key="ColorToRgbaStringConverter" />
+            <mctConverters:ColorToHexRgbStringConverter x:Key="ColorToHexRgbStringConverter" />
+            <mctConverters:ColorToHexRgbaStringConverter x:Key="ColorToHexRgbaStringConverter" />
+            <mctConverters:ColorToCmykStringConverter x:Key="ColorToCmykStringConverter" />
+            <mctConverters:ColorToCmykaStringConverter x:Key="ColorToCmykaStringConverter" />
+            <mctConverters:ColorToHslStringConverter x:Key="ColorToHslStringConverter" />
+            <mctConverters:ColorToHslaStringConverter x:Key="ColorToHslaStringConverter" />
+            <mctConverters:ColorToBlackKeyConverter x:Key="ColorToBlackKeyConverter" />
+            <mctConverters:ColorToByteAlphaConverter x:Key="ColorToByteAlphaConverter" />
+            <mctConverters:ColorToByteRedConverter x:Key="ColorToByteRedConverter" />
+            <mctConverters:ColorToByteGreenConverter x:Key="ColorToByteGreenConverter" />
+            <mctConverters:ColorToByteBlueConverter x:Key="ColorToByteBlueConverter" />
+            <mctConverters:ColorToPercentCyanConverter x:Key="ColorToPercentCyanConverter" />
+            <mctConverters:ColorToPercentMagentaConverter x:Key="ColorToPercentMagentaConverter" />
+            <mctConverters:ColorToPercentYellowConverter x:Key="ColorToPercentYellowConverter" />
+            <mctConverters:ColorToDegreeHueConverter x:Key="ColorToDegreeHueConverter" />
+            <mctConverters:ColorToBlackOrWhiteConverter x:Key="ColorToBlackOrWhiteConverter" />
+            <mctConverters:ColorToColorForTextConverter x:Key="ColorToColorForTextConverter"/>
+            <mctConverters:ColorToGrayScaleColorConverter  x:Key="ColorToGrayScaleColorConverter"/>
+            <mctConverters:ColorToInverseColorConverter   x:Key="ColorToInverseColorConverter"/>
+    </ContentPage.Resources>
 
-    <ScrollView>
-        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,*,*"
-              Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
 
-            <Label 
-                Text="Hello, World!"
-                Grid.Row="0"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="25" RowDefinitions="100,Auto,Auto,Auto,*,*"
+                  Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
 
-            <Label 
-                Text="Welcome to .NET Multi-platform App UI"
-                Grid.Row="1"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                <CollectionView
+                    x:Name="myCollectionView"
+                    Grid.Row="0"
+                    HorizontalOptions="Center">
 
-            <Label 
-                Text="Current count: 0"
-                Grid.Row="2"
-                FontSize="18"
-                FontAttributes="Bold"
-                x:Name="CounterLabel"
-                HorizontalOptions="Center" />
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>   
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>                            
+                            <local:TintableImage
+                                Source="dotnet_chickenbo512t.png"
+                                WidthRequest="100"
+                                Aspect="AspectFit"
+                                TintColor="{Binding .}"/>
+                        </DataTemplate>
 
-            <HorizontalStackLayout
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+                <Label 
+                    Text="Current count: 0"
+                    Grid.Row="2"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    x:Name="CounterLabel"
+                    HorizontalOptions="Center" />
+
+                <HorizontalStackLayout
                 
-                HorizontalOptions="Center"
-                Grid.Row="3">
-            <Button 
-                Text="Click me"
-                FontAttributes="Bold"
-                Grid.Row="3"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"/>
-            <Button 
-                Text="Clear Color"
-                FontAttributes="Bold"
-                Clicked="Clear" />
-            </HorizontalStackLayout>
-            <local:TintableImage Grid.Row="4"
-                                 x:Name="tintableImage"
-                Source="dotnet_chickenbo512t.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                WidthRequest="250"
-                HeightRequest="310"
-                TintColor="Green"
-                HorizontalOptions="Center"/>
+                    HorizontalOptions="Center"
+                    Grid.Row="3">
+                <Button 
+                    Text="Click me"
+                    FontAttributes="Bold"
+                    Grid.Row="3"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Clicked="OnCounterClicked"/>
+                <Button 
+                    Text="Clear Color"
+                    FontAttributes="Bold"
+                    Clicked="Clear" />
+                </HorizontalStackLayout>
+                <local:TintableImage Grid.Row="4"
+                                     x:Name="tintableImage"
+                    Source="dotnet_chickenbo512t.png"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    WidthRequest="250"
+                    HeightRequest="310"
+                    TintColor="Green"
+                    HorizontalOptions="Center"/>
             
-            <local:TintableImage Grid.Row="5"
-                Source="dotnet_chickenbo512t.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                WidthRequest="250"
-                HeightRequest="310"
-                HorizontalOptions="Center"/>
+                <local:TintableImage Grid.Row="5"
+                    Source="dotnet_chickenbo512t.png"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    WidthRequest="250"
+                    HeightRequest="310"
+                    HorizontalOptions="Center"/>
 
-        </Grid>
-    </ScrollView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
