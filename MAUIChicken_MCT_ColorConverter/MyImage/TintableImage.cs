@@ -7,7 +7,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+#if __IOS__
 using UIKit;
+#endif
 
 namespace MAUIChicken_MCT_ColorConverter.MyImage
 {

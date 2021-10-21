@@ -51,6 +51,10 @@
 		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.26-experimental1" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre2" />
+	</ItemGroup>
+
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
