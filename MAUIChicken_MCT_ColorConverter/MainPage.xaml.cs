@@ -24,11 +24,6 @@ namespace MAUIChicken_MCT_ColorConverter
 
 		private void OnCounterClicked(object sender, EventArgs e)
 		{
-			count++;
-			CounterLabel.Text = $"Current count: {count}";
-
-			SemanticScreenReader.Announce(CounterLabel.Text);
-
 			tintableImage.TintColor = _colors.Values.ToList()[new Random().Next(_colors.Count)];
 		}
 
@@ -36,5 +31,34 @@ namespace MAUIChicken_MCT_ColorConverter
         {
 			tintableImage.TintColor = Colors.Transparent;
         }
-	}
+
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try { 
+			Console.WriteLine("Event fired with " + e.ToString());
+			TappedEventArgs tappedEventArgs = e as TappedEventArgs;
+			Console.WriteLine((tappedEventArgs.Parameter as Color).ToString());
+			tintableImage.TintColor = tappedEventArgs.Parameter as Color;
+        }catch(Exception ex)
+            {
+				Console.WriteLine("Ex: " + ex.Message);
+
+            }
+			}
+
+        void myCollectionView_SelectionChanged(System.Object sender, Microsoft.Maui.Controls.SelectionChangedEventArgs e)
+        {
+			try {
+				Console.WriteLine("Type is ", e.GetType().ToString());
+				Console.WriteLine("Event fired with " + e.CurrentSelection.ToString());
+				Color selectedColor = (Color)e.CurrentSelection.FirstOrDefault();
+				Console.WriteLine(selectedColor.ToString());
+				tintableImage.TintColor =  selectedColor;
+			}catch (Exception ex)
+			{
+				Console.WriteLine("Ex: " + ex.Message);
+
+			}
+		}
+    }
 }

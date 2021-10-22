@@ -40,14 +40,21 @@ namespace MAUIChicken_MCT_ColorConverter.MyImage
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
-                if (propertyName == "Renderer")
-                ChangeColor(TintColor);
+            try
+            {
+
+                //if (propertyName == "Renderer")
+                    ChangeColor(TintColor);
+                //Console.WriteLine("Works with this {0}", propertyName);
+            } catch (Exception ex)
+            {
+
+            }
         }
 
         void ChangeColor(Color newValue)
         {
             var image = this;
-            Console.WriteLine("Called ChangeColor");
 #if __ANDROID__
             var androidImage = image.Handler.NativeView as Android.Widget.ImageView;
             if(newValue == Colors.Transparent)
