@@ -9,23 +9,30 @@
                 <Setter Property="Source" Value="dotnet_chickenbo512t.png"/>
                 <Setter Property="Aspect" Value="AspectFit"/>
             </Style>
-            <mctConverters:ColorToRgbStringConverter x:Key="ColorToRgbStringConverter" />
+        <!--Color to String (4)-->
+            <!--<mctConverters:ColorToRgbStringConverter x:Key="ColorToRgbStringConverter" />-->
             <mctConverters:ColorToRgbaStringConverter x:Key="ColorToRgbaStringConverter" />
-            <mctConverters:ColorToHexRgbStringConverter x:Key="ColorToHexRgbStringConverter" />
+            <!--<mctConverters:ColorToHexRgbStringConverter x:Key="ColorToHexRgbStringConverter" />-->
             <mctConverters:ColorToHexRgbaStringConverter x:Key="ColorToHexRgbaStringConverter" />
-            <mctConverters:ColorToCmykStringConverter x:Key="ColorToCmykStringConverter" />
+            <!--<mctConverters:ColorToCmykStringConverter x:Key="ColorToCmykStringConverter" />-->
             <mctConverters:ColorToCmykaStringConverter x:Key="ColorToCmykaStringConverter" />
-            <mctConverters:ColorToHslStringConverter x:Key="ColorToHslStringConverter" />
+            <!--<mctConverters:ColorToHslStringConverter x:Key="ColorToHslStringConverter" />-->
             <mctConverters:ColorToHslaStringConverter x:Key="ColorToHslaStringConverter" />
-            <mctConverters:ColorToBlackKeyConverter x:Key="ColorToBlackKeyConverter" />
-            <mctConverters:ColorToByteAlphaConverter x:Key="ColorToByteAlphaConverter" />
+        
+        <!--Color to Color component (9) -->
+        
             <mctConverters:ColorToByteRedConverter x:Key="ColorToByteRedConverter" />
             <mctConverters:ColorToByteGreenConverter x:Key="ColorToByteGreenConverter" />
             <mctConverters:ColorToByteBlueConverter x:Key="ColorToByteBlueConverter" />
+            <mctConverters:ColorToByteAlphaConverter x:Key="ColorToByteAlphaConverter" />
+        
             <mctConverters:ColorToPercentCyanConverter x:Key="ColorToPercentCyanConverter" />
             <mctConverters:ColorToPercentMagentaConverter x:Key="ColorToPercentMagentaConverter" />
             <mctConverters:ColorToPercentYellowConverter x:Key="ColorToPercentYellowConverter" />
+            <mctConverters:ColorToBlackKeyConverter x:Key="ColorToBlackKeyConverter" />        
+        
             <mctConverters:ColorToDegreeHueConverter x:Key="ColorToDegreeHueConverter" />
+        <!--Color to Color (4)-->
             <mctConverters:ColorToBlackOrWhiteConverter x:Key="ColorToBlackOrWhiteConverter" />
             <mctConverters:ColorToColorForTextConverter x:Key="ColorToColorForTextConverter"/>
             <mctConverters:ColorToGrayScaleColorConverter  x:Key="ColorToGrayScaleColorConverter"/>
@@ -87,31 +94,46 @@
                       RowDefinitions="*,*,*,*,*,*">
                   
 
-                <local:TintableImage GridLayout.Column="2" GridLayout.ColumnSpan="2"
-                                     GridLayout.Row="2" GridLayout.RowSpan="2"
+                <local:TintableImage GridLayout.Column="0" GridLayout.ColumnSpan="2"
+                                     GridLayout.Row="0" GridLayout.RowSpan="2"
                                      TintColor="Green"
                                      x:Name="tintableImage"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="0" GridLayout.Row="0"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="1" GridLayout.Row="0"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="2" GridLayout.Row="0"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="3" GridLayout.Row="0"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="4" GridLayout.Row="0"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="5" GridLayout.Row="0"/>
+                <Label GridLayout.Column="0" GridLayout.ColumnSpan="2"
+                       GridLayout.Row="0"
+                       Text="Selected color"/>
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="0" GridLayout.Row="0"/>-->
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="1" GridLayout.Row="0"/>-->
+                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}" GridLayout.ColumnSpan="2" GridLayout.RowSpan="2" GridLayout.Column="2" GridLayout.Row="0"/>
 
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="0" GridLayout.Row="1"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="1" GridLayout.Row="1"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="2" GridLayout.Row="1"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="3" GridLayout.Row="1"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="4" GridLayout.Row="1"/>
-                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="5" GridLayout.Row="1"/>
+                <Label GridLayout.Column="2" GridLayout.ColumnSpan="2"
+                       GridLayout.Row="0"
+                       Text="Inverse color"/>
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="3" GridLayout.Row="0"/>-->
+                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToGrayScaleColorConverter}}"  GridLayout.Column="4" GridLayout.Row="0" GridLayout.RowSpan="2" GridLayout.ColumnSpan="2"/>
+
+                <Label GridLayout.Column="4" GridLayout.ColumnSpan="2"
+                       GridLayout.Row="0"
+                       Text="Grayscale color"/>
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="5" GridLayout.Row="0"/>-->
+
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="0" GridLayout.Row="1"/>-->
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="1" GridLayout.Row="1"/>-->
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="2" GridLayout.Row="1"/>-->
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="3" GridLayout.Row="1"/>-->
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="4" GridLayout.Row="1"/>-->
+                <!--<local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="5" GridLayout.Row="1"/>-->
 
                 <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="0" GridLayout.Row="2"/>
                 <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="1" GridLayout.Row="2"/>
+                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="2" GridLayout.Row="2"/>
+                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="3" GridLayout.Row="2"/>
                 <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="4" GridLayout.Row="2"/>
                 <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="5" GridLayout.Row="2"/>
 
                 <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="0" GridLayout.Row="3"/>
                 <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="1" GridLayout.Row="3"/>
+                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="2" GridLayout.Row="3"/>
+                <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="3" GridLayout.Row="3"/>
                 <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="4" GridLayout.Row="3"/>
                 <local:TintableImage TintColor="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToInverseColorConverter}}"  GridLayout.Column="5" GridLayout.Row="3"/>
 
