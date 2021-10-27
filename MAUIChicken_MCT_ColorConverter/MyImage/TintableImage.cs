@@ -13,7 +13,7 @@ using UIKit;
 
 namespace MAUIChicken_MCT_ColorConverter.MyImage
 {
-    public class TintableImage : Image
+    public partial class TintableImage : Image
     {
         public static readonly BindableProperty TintColorProperty
         = BindableProperty.CreateAttached("TintColor", typeof(Color), typeof(TintableImage), Colors.Transparent
@@ -42,17 +42,15 @@ namespace MAUIChicken_MCT_ColorConverter.MyImage
             base.OnPropertyChanged(propertyName);
             try
             {
-
-                //if (propertyName == "Renderer")
                     ChangeColor(TintColor);
-                //Console.WriteLine("Works with this {0}", propertyName);
             } catch (Exception ex)
             {
 
             }
         }
 
-        void ChangeColor(Color newValue)
+        partial void ChangeColor(Color newValue);
+        /*
         {
             var image = this;
 #if __ANDROID__
@@ -83,5 +81,6 @@ namespace MAUIChicken_MCT_ColorConverter.MyImage
             }
 #endif
         }
+        */
     }
 }

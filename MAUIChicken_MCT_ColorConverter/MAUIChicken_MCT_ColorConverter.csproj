@@ -59,5 +59,13 @@
 		<OutputType>WinExe</OutputType>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <_MauiCompileToAdd Remove="Platforms\iOS\TintableImage_iOS.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Platforms\iOS\TintableImage_iOS.cs" />
+	</ItemGroup>
 	
 </Project>
