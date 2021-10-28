@@ -87,7 +87,7 @@
             
                 <Grid GridLayout.Row="4"
                       ColumnDefinitions="*,*,*,*,*,*"
-                      RowDefinitions="*,10,*,*,*,*,*">
+                      RowDefinitions="50,10,*,*,*,*,*">
                   
                 <!--Decoration-->
                 <local:TintableImage GridLayout.Column="0" TintColor="Green" GridLayout.ColumnSpan="1"/>
@@ -105,7 +105,7 @@
                 <local:TintableImage GridLayout.Column="3" TintColor="Cyan" GridLayout.ColumnSpan="1"/>
                 <local:TintableImage GridLayout.Column="2" TintColor="Magenta" GridLayout.ColumnSpan="1"/>
                     
-                <local:TintableImage GridLayout.Column="2" TintColor="Black" GridLayout.ColumnSpan="2"/>
+                <local:TintableImage GridLayout.Column="2" TintColor="Transparent" GridLayout.ColumnSpan="2"/>
                     
                 <BoxView GridLayout.Row="1" BackgroundColor="Black" GridLayout.ColumnSpan="6"></BoxView>
 
