@@ -122,6 +122,7 @@
                     <Label Text="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToRgbStringConverter}}"/>
                     <Label Text="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToCmykStringConverter}}"/>
                     <Label Text="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToHslaStringConverter}}"/>
+                    <Label Text="{Binding Source={x:Reference tintableImage}, Path=TintColor, Converter={StaticResource ColorToHexRgbaStringConverter}}"/>
 
                 </VerticalStackLayout>
                     <!--RGBA-->
